@@ -1,6 +1,8 @@
 * { margin: 0; padding: 0;}
 body { font: 16px Georgia, serif; }
-
+a, a:visited{
+  text-decoration: none;
+}
 
 section > div { padding: 20px; }
 header, nav, section, footer {
@@ -17,3 +19,25 @@ header, nav, section, footer {
 }
 
 nav span { margin: 0 10px 0 0; }
+
+footer{
+  min-height: 100px;
+  font-size: .8em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+footer a{
+  margin: 5px;
+}
+
+#github_logo{
+  background: no-repeat url(/images/GitHub-Mark-32px.png);
+  background-size: cover;
+  opacity: .2;
+  height: 24px;
+  width: 24px;
+}
+#github_logo:hover{
+  opacity: .4;
+}
