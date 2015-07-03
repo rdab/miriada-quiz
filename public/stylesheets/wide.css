@@ -16,6 +16,12 @@ section {
   height: 200px;
 }
 
+#n1 {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
 footer {
   clear: both;
 }

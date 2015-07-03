@@ -1,13 +1,31 @@
 * { margin: 0; padding: 0;}
 body { font: 16px Georgia, serif; }
+
 a, a:visited{
   text-decoration: none;
+  color: black;
+}
+a.links{
+  color: #186D80;
+}
+a.links:hover{
+  color: #3BD1F3;
 }
 
 section > div { padding: 20px; }
 header, nav, section, footer {
   background: #eee;
   text-align: center;
+}
+
+#n1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#n1 span{
+  margin: 3px;
 }
 
 #page-wrap { margin: 2% auto; color: white; }
