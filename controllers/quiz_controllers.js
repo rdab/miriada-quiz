@@ -13,11 +13,19 @@ exports.answer = function(req, res){
 exports.author = function(req, res){
   authors_list = [{
     "name": "Roberto Damián Alfonso",
-    "desc": "Sobre mí...",
-    "contacts": {
-      "fb": "https://www.facebook.com/rdamian.alfonso",
-      "in": "https://www.linkedin.com/in/robertodamian"
-    }
-  }]
-  res.render('authors', {autors: authors_list});
+    "picture": "/images/author1",
+    "tw": "",
+    "fb": "https://www.facebook.com/rdamian.alfonso",
+    "in": "https://www.linkedin.com/in/robertodamian",
+    "github": "https://github.com/rdab"
+  },
+  {
+  "name": "Juan Quemada Vives",
+  "picture": "/images/author2.jpg",
+  "tw": "https://twitter.com/jquemada",
+  "fb": "https://www.facebook.com/jquemada1",
+  "in": "https://www.linkedin.com/pub/juan-quemada/0/523/34a",
+  "github": ""  // https://github.com/jquemada. Solo para comprobar q no se muestra
+}]
+  res.render('authors', { "authors": authors_list });
 };

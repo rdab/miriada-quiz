@@ -60,3 +60,48 @@ footer a{
 #github_logo:hover{
   opacity: .4;
 }
+
+/*
+  Pagina Autores
+ */
+#authors_wrap{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+ }
+#authors_wrap article{
+  font: .9em Arial;
+  display: flex;
+  flex-flow: nowrap column;
+  margin: 1em;
+}
+.author_links{
+  margin-top: .3em;
+}
+.author_pict img{
+  height: 100px;
+  width: 100px;
+}
+.author_links span{
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+}
+#al_fb span{
+  background-image: url(/images/FB-f-Logo__blue_29.png);
+}
+#al_in span{
+  background-image: url(/images/In-2C-28px-R.png);
+}
+#al_github span{
+  background-image: url(/images/GitHub-Mark-32px.png);
+}
+#al_tw span{
+  background-image: url(/images/twitter.png);
+}
+
+.contact span:hover{
+  box-shadow: 0px 2px 0px 0px #3BD1F3;
+}

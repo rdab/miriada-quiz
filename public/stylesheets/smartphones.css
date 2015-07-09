@@ -9,6 +9,15 @@ h2 span, section h3 { display: none; }
 body { font-size: xx-large; }
 footer, input {font-size: large; }
 
-#n1{
-  
+.author_name{
+  font-size: .7em;
+}
+#authors_wrap article{
+  margin: .6em;
+}
+#authors_wrap article:last-child{
+  margin-bottom: 0;
+}
+#authors_wrap article:first-child{
+  margin-top: 0;
 }

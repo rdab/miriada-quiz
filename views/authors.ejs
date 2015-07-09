@@ -1,7 +1,33 @@
-<div id="authors">
-  <h3>Autores</h3>
-  <h4>En este proyecto han particiado:</h4>
-  <ul>
-    <li>Roberto</li>
-  </ul>
+<h3>Autores</h3>
+<div id="authors_wrap">
+  <% for (i in authors){ %>
+    <article>
+      <span class="author_pict">
+        <img src=<%= authors[i].picture %> alt="picture"> </img>
+      </span>
+      <span class="author_name"><%= authors[i].name %></span>
+      <span class="author_links">
+        <% if (authors[i].fb != "") { %>
+          <a id="al_fb" class="contact" href=<%= authors[i].fb %> >
+            <span > </span>
+          </a>
+        <% } %>
+        <% if (authors[i].in != "") { %>
+          <a id="al_in" class="contact" href=<%= authors[i].in %> >
+            <span > </span>
+          </a>
+        <% } %>
+        <% if (authors[i].github != "") { %>
+          <a id="al_github" class="contact" href=<%= authors[i].github %>>
+            <span  > </span>
+          </a>
+        <% } %>
+        <% if (authors[i].tw != "") { %>
+          <a id="al_tw" class="contact" href=<%= authors[i].tw %>>
+            <span  > </span>
+          </a>
+        <% } %>
+      </span>
+    </article>
+  <% } %>
 </div>
