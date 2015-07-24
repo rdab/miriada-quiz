@@ -1,7 +1,7 @@
 var path = require('path');
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('postgres://admin:admin@postgres:5432/quiz');
+var sequelize = new Sequelize(process.env.DATABASE_URL);
 var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 exports.Quiz = Quiz;
 
