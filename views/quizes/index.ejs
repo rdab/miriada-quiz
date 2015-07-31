@@ -5,11 +5,15 @@
   </form>
 </div>
 <ul>
-  <% for (var i in quizes) { %>
-    <li>
-      <a class="links" href="quizes/<%= quizes[i].id %>">
-        <%= quizes[i].pregunta %>
-      </a>
-    </li>
+  <% if (quizes.length > 0) { %>
+    <% for (var i in quizes) { %>
+      <li>
+        <a class="links" href="quizes/<%= quizes[i].id %>">
+          <%= quizes[i].pregunta %>
+        </a>
+      </li>
+    <% } %>
+  <% } else { %>
+    <p>No se encontraron coincidencias</p>
   <% } %>
 </ul>
