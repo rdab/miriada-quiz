@@ -13,10 +13,21 @@ exports.load = function(req, res, next, quizId){
 };
 
 // GET /quizes
+// GET /quizes?search=filter_value
 exports.index = function(req, res){
-  models.Quiz.findAll().then(function(quizes) {
-    res.render('quizes/index', { "quizes": quizes });
-  });
+  search = req.query.search;
+  filter = {};
+  if (search) { // Si existe parametro 'search' filtrar el resultado
+    console.log(search);
+    search = '%' + search.trim().replace(/ +/g, '%') + '%';
+    filter = { where: ["pregunta like ?", search] };
+  }
+
+  models.Quiz.findAll(filter).then(
+    function(quizes){
+      res.render('quizes/index', { "quizes": quizes });
+    }
+  )
 };
 
 // GET /quizes/:id
