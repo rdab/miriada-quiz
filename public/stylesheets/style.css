@@ -63,7 +63,14 @@ footer a{
 }
 
 /*
-  Pagina Autores
+  Preguntas
+*/
+#quizes_filter{
+  margin-bottom: 1em;
+}
+
+/*
+  Autores
  */
 #authors_wrap{
   display: flex;
