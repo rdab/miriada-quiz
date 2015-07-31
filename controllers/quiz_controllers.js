@@ -1,16 +1,49 @@
-//GET /quizes/question
-exports.question = function(req, res){
-  res.render('quizes/question', { "pregunta": "Capital de Italia" })
+var models = require('../models/models');
+
+// Autoload
+exports.load = function(req, res, next, quizId){
+  models.Quiz.find(quizId).then(
+    function(quiz) {
+      if (quiz) {
+        req.quiz = quiz;
+        next();
+      } else { next(new Error('No existe quiz con el id: ' + quizId));}
+    }
+  ).catch(function(error) { next(error); });
 };
 
-//GET /quizes/answer
-exports.answer = function(req, res){
-  var evaluacion = (req.query.respuesta === 'Roma') ? 'Correcto' : 'Incorrecto';
-  res.render('quizes/answer', { "respuesta": evaluacion });
+// GET /quizes
+// GET /quizes?search=filter_value
+exports.index = function(req, res){
+  search = req.query.search;
+  filter = {};
+  if (search) { // Si existe parametro 'search' filtrar el resultado
+    console.log(search);
+    search = '%' + search.trim().replace(/ +/g, '%') + '%';
+    filter = { where: ["pregunta like ?", search] };
+  }
+
+  models.Quiz.findAll(filter).then(
+    function(quizes){
+      res.render('quizes/index', { "quizes": quizes });
+    }
+  )
+};
+
+// GET /quizes/:id
+exports.show = function(req, res){
+  res.render('quizes/show', { "quiz": req.quiz })
+};
+
+// GET /quizes/:id/answer
+exports.answer = function(req, res) {
+  var evaluacion = (req.query.respuesta === req.quiz.respuesta) ? 'Correcto' : 'Incorrecto';
+  res.render('quizes/answer', { "respuesta": evaluacion,
+                                "quiz": req.quiz });
 };
 
 //GET /author
-exports.author = function(req, res){
+exports.author = function(req, res) {
   authors_list = [{
     "name": "Roberto Damián Alfonso",
     "picture": "/images/author1",
