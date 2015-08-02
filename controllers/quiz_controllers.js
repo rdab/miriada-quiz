@@ -42,6 +42,24 @@ exports.answer = function(req, res) {
                                 "quiz": req.quiz });
 };
 
+// GET /quizes/new
+exports.new = function(req, res) {
+  var quiz = models.Quiz.build({
+    pregunta: "Pregunta",
+    respuesta: "Respuesta"
+    });
+  res.render('quizes/new', {quiz: quiz});
+};
+
+// GET /quizes/create
+exports.create = function(req, res) {
+  var quiz = models.Quiz.build(req.body.quiz);
+
+  quiz.save({fields: ["pregunta", "respuesta"]}).then( function(){
+    res.redirect('/quizes');
+  });
+};
+
 //GET /author
 exports.author = function(req, res) {
   authors_list = [{
