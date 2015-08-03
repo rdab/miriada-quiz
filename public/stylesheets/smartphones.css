@@ -2,7 +2,7 @@ body {
   background: #333;
 }
 
-h2 span, section h3 { display: none; }
+h2 span, section h3, .rem { display: none; }
 
 body { font-size: xx-large; }
 footer, input {font-size: large; }
