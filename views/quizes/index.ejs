@@ -1,28 +1,37 @@
-<div id='quizes_filter'>
+<div id='quizes_actions'>
   <form class="" action="/quizes" method="GET">
     <input type="text" name="search" placeholder="Buscar Quiz"/>
     <input type="submit" value="Filtrar">
   </form>
+  &nbsp;|&nbsp;
+  <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
 </div>
-<ul>
-  <% if (quizes.length > 0) { %>
-    <% for (var i in quizes) { %>
-      <li>
-        <a class="links" href="quizes/<%= quizes[i].id %>">
-          <%= quizes[i].pregunta %>
-        </a>
-        <a class="links" href="quizes/<%= quizes[i].id/edit %>">
-          <button type="button">editar</button>
-        </a>
-        <form action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
-          <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-            borrar
-          </button>
-        </form>
-      </li>
+<div id="quiz_list">
+  <table>
+    <% if (quizes.length > 0) { %>
+      <% for (var i in quizes) { %>
+        <tr>
+          <td>
+            <a class="links" href="quizes/<%= quizes[i].id %>">
+              <%= quizes[i].pregunta %>
+            </a>
+          </td>
+          <td>
+            <a class="links" href="quizes/<%= quizes[i].id %>/edit">
+              <button type="button">editar</button>
+            </a>
+          </td>
+          <td>
+            <form action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
+              <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+                borrar
+              </button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+    <% } else { %>
+      <p>No se encontraron coincidencias</p>
     <% } %>
-  <% } else { %>
-    <p>No se encontraron coincidencias</p>
-  <% } %>
-</ul>
-<a href="/quizes/new"><button type="button">Crear pregunta</button></a>
+  </table>
+</div>

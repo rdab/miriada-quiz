@@ -18,7 +18,6 @@ exports.index = function(req, res){
   search = req.query.search;
   filter = {};
   if (search) { // Si existe parametro 'search' filtrar el resultado
-    console.log(search);
     search = '%' + search.trim().replace(/ +/g, '%') + '%';
     filter = { where: ["pregunta like ?", search] };
   }
@@ -76,12 +75,12 @@ exports.edit = function(req, res) {
 exports.update = function (req, res) {
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
-
+  
   req.quiz.validate().then( function(err) {
     if (err){
       res.render('quizes/edit', { quiz: req.quiz, errors: err.errors });
     } else {
-      quiz.save({ fields: ["pregunta", "respuesta"] })
+      req.quiz.save({ fields: ["pregunta", "respuesta"] })
       .then( function(){ res.redirect('/quizes') });
     }
   });
