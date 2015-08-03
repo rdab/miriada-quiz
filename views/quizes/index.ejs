@@ -11,6 +11,9 @@
         <a class="links" href="quizes/<%= quizes[i].id %>">
           <%= quizes[i].pregunta %>
         </a>
+        <a class="links" href="quizes/<%= quizes[i].id/edit %>">
+          <button type="button">editar</button>
+        </a>
       </li>
     <% } %>
   <% } else { %>
