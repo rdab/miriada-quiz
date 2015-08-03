@@ -25,21 +25,22 @@ exports.index = function(req, res){
 
   models.Quiz.findAll(filter).then(
     function(quizes){
-      res.render('quizes/index', { "quizes": quizes });
+      res.render('quizes/index', { quizes: quizes, errors: [] });
     }
   )
 };
 
 // GET /quizes/:id
 exports.show = function(req, res){
-  res.render('quizes/show', { "quiz": req.quiz })
+  res.render('quizes/show', { quiz: req.quiz, errors: [] })
 };
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res) {
   var evaluacion = (req.query.respuesta === req.quiz.respuesta) ? 'Correcto' : 'Incorrecto';
-  res.render('quizes/answer', { "respuesta": evaluacion,
-                                "quiz": req.quiz });
+  res.render('quizes/answer', { respuesta: evaluacion,
+                                quiz: req.quiz,
+                                errors: [] });
 };
 
 // GET /quizes/new
@@ -48,15 +49,20 @@ exports.new = function(req, res) {
     pregunta: "Pregunta",
     respuesta: "Respuesta"
     });
-  res.render('quizes/new', {quiz: quiz});
+  res.render('quizes/new', { quiz: quiz, errors: [] });
 };
 
 // GET /quizes/create
 exports.create = function(req, res) {
   var quiz = models.Quiz.build(req.body.quiz);
 
-  quiz.save({fields: ["pregunta", "respuesta"]}).then( function(){
-    res.redirect('/quizes');
+  quiz.validate().then( function(err) {
+    if (err){
+      res.render('quizes/new', { quiz: quiz, errors: err.errors });
+    } else {
+      quiz.save({ fields: ["pregunta", "respuesta"] })
+      .then( function(){ res.redirect('/quizes') });
+    }
   });
 };
 
@@ -78,5 +84,5 @@ exports.author = function(req, res) {
   "in": "https://www.linkedin.com/pub/juan-quemada/0/523/34a",
   "github": ""  // https://github.com/jquemada. Solo para comprobar q no se muestra
 }]
-  res.render('authors', { "authors": authors_list });
+  res.render('authors', { "authors": authors_list, errors: [] });
 };
