@@ -14,6 +14,11 @@
         <a class="links" href="quizes/<%= quizes[i].id/edit %>">
           <button type="button">editar</button>
         </a>
+        <form action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
+          <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+            borrar
+          </button>
+        </form>
       </li>
     <% } %>
   <% } else { %>
