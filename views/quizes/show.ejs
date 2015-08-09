@@ -4,3 +4,15 @@
   <input type="submit" value="Enviar">
 </form>
 <p>Temática: <%= topic %></p>
+
+<div class="" id="quiz_comments">
+  <p>
+    <a href="/quizes/<%= quiz.id %>/comments/new"><button type="button">Nuevo Comentario</button></a>
+  </p>
+  <h3>Comentarios</h3>
+  <ul>
+    <% for (index in quiz.Comments) { %>
+      <li><%= quiz.Comments[index].texto%></li>
+    <% } %>
+  </ul>
+</div>

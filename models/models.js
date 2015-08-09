@@ -9,6 +9,9 @@ var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 var Comment = sequelize.import(path.join(__dirname, 'comment'))
 var topics = require('./topic');
 
+Comment.belongsTo(Quiz);
+Quiz.hasMany(Comment);
+
 // Exportar modelos
 exports.Quiz = Quiz;
 exports.Comment = Comment
