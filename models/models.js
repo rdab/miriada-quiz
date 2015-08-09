@@ -1,12 +1,20 @@
 var path = require('path');
 var Sequelize = require('sequelize');
+
+// Inicializar ORM
+var sequelize = new Sequelize(process.env.DATABASE_URL);
+
+// Importar ficheros con definicion de modelos
+var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
+var Comment = sequelize.import(path.join(__dirname, 'comment'))
 var topics = require('./topic');
 
-var sequelize = new Sequelize(process.env.DATABASE_URL);
-var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
+// Exportar modelos
 exports.Quiz = Quiz;
+exports.Comment = Comment
 exports.Topics = topics;
 
+// Poblar Quizes si no existen...
 sequelize.sync().then(function() {
   Quiz.count().then(function(count) {
     if (count === 0){
