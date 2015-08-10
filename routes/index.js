@@ -3,12 +3,20 @@ var router = express.Router();
 
 var quizControllers = require('../controllers/quiz_controllers');
 var commentControllers = require('../controllers/comment_controller');
+var sessionControllers = require('../controllers/session_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: "Quiz", errors: [] });
 });
+
+// Author page
 router.get('/author', quizControllers.author);
+
+// Session routes
+router.get('/login', sessionControllers.new);
+router.post('/login', sessionControllers.create);
+router.get('/logout', sessionControllers.destroy);
 
 // quizes routes
 router.param('quizId', quizControllers.load);

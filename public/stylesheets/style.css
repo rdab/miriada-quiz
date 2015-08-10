@@ -37,6 +37,8 @@ header, nav, section, footer {
   color: black;
 }
 
+.right { float: right; }
+
 nav span { margin: 0 10px 0 0; }
 
 #ErrorMsgs{
