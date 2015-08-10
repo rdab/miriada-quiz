@@ -90,6 +90,18 @@ table{
 }
 
 /*
+  Comentarios
+*/
+#quiz_comments{
+  margin-top: 1em;
+  border-top: 1px solid gray;
+  padding-top: .5em;
+}
+#quiz_comments li{
+  list-style: '- ';
+}
+
+/*
   Autores
  */
 #authors_wrap{
