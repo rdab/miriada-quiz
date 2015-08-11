@@ -102,6 +102,9 @@ table{
 #quiz_comments li{
   list-style: '- ';
 }
+#quiz_comments form{
+  display: inline-block;
+}
 
 /*
   Autores
