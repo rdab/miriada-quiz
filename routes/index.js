@@ -23,11 +23,11 @@ router.param('quizId', quizControllers.load);
 router.get('/quizes', quizControllers.index);
 router.get('/quizes/:quizId(\\d+)', quizControllers.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizControllers.answer);
-router.get('/quizes/new', quizControllers.new);
-router.post('/quizes/create', quizControllers.create);
-router.get('/quizes/:quizId(\\d+)/edit', quizControllers.edit);
-router.put('/quizes/:quizId(\\d+)', quizControllers.update);
-router.delete('/quizes/:quizId(\\d+)', quizControllers.destroy);
+router.get('/quizes/new', sessionControllers.loginRequired, quizControllers.new);
+router.post('/quizes/create', sessionControllers.loginRequired, quizControllers.create);
+router.get('/quizes/:quizId(\\d+)/edit', sessionControllers.loginRequired, quizControllers.edit);
+router.put('/quizes/:quizId(\\d+)', sessionControllers.loginRequired, quizControllers.update);
+router.delete('/quizes/:quizId(\\d+)', sessionControllers.loginRequired, quizControllers.destroy);
 
 // comments routes
 router.get('/quizes/:quizId(\\d+)/comments/new', commentControllers.new);

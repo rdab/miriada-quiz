@@ -3,8 +3,10 @@
     <input type="text" name="search" placeholder="Buscar Quiz"/>
     <input type="submit" value="Filtrar">
   </form>
-  &nbsp;|&nbsp;
-  <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
+  <% if (session.user) { %>
+    &nbsp;|&nbsp;
+    <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
+  <% } %>
 </div>
 <div id="quiz_list">
   <table>
@@ -16,18 +18,20 @@
               <%= quizes[i].pregunta %>
             </a>
           </td>
-          <td>
-            <a class="links" href="quizes/<%= quizes[i].id %>/edit">
-              <button type="button">editar</button>
-            </a>
-          </td>
-          <td>
-            <form action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
-              <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-                borrar
-              </button>
-            </form>
-          </td>
+          <% if (session.user) { %>
+            <td>
+              <a class="links" href="quizes/<%= quizes[i].id %>/edit">
+                <button type="button">editar</button>
+              </a>
+            </td>
+            <td>
+              <form action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
+                <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+                  borrar
+                </button>
+              </form>
+            </td>
+          <% } %>
         </tr>
         <% } %>
     <% } else { %>
