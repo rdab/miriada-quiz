@@ -37,6 +37,21 @@ app.use(function(req, res, next) {
   next();
 });
 
+// Auto logout
+app.use(function(req, res, next) {
+  if (req.session.user){     // Tiene sesión iniciada
+    now = new Date();
+    lastSeen = new Date(req.session.user.lastSeen);
+
+    req.session.user.lastSeen = now;  // Actualizar fecha de acceso
+    if (now - lastSeen > 120000){   // Pasaron 2 min sin actividad
+      res.redirect('/logout');
+      return;
+    }
+  }
+  next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler

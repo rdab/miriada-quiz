@@ -27,9 +27,10 @@ exports.create = function(req, res){
       return;
     }
 
-    req.session.user = { id: user.id, username: user.username };
-
-    console.log(req.session.redir);
+    req.session.user = { id: user.id,
+                         username: user.username,
+                         lastSeen: new Date()
+    };
     res.redirect(req.session.redir.toString());
   });
 };
