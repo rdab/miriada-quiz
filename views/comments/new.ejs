@@ -1,7 +1,20 @@
-<h3>
-  A&ntilde;adir comentario:
-</h3>
-<form class="" action="/quizes/<%= quizId %>/comments" method="post">
-  <input type="text" name="comment[texto]" placeholder="Comentario" value="" id="comment"/>
-  <button type="submit">Enviar</button>
-</form>
+<div class="row center-block">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+    <h3 class="">A&ntilde;adir comentario</h3>
+    <hr class="featurette-divider">
+    <form class="form-horizontal" action="/quizes/<%= quizId %>/comments" method="post">
+      <div class="form-group">
+        <label class="col-sm-3 control-label" for="comment">Comentario</label>
+        <div class="col-sm-9">
+          <textarea class="form-control" rows="3" type="text" name="comment[texto]" placeholder="Comentario" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+          <a class="btn btn-default" href="/quizes/<%= quizId %>">Cancelar</a>
+          <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
