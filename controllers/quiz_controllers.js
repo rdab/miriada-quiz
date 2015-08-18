@@ -115,13 +115,6 @@ exports.author = function(req, res) {
     "in": "https://www.linkedin.com/in/robertodamian",
     "github": "https://github.com/rdab"
   },
-  {
-  "name": "Juan Quemada Vives",
-  "picture": "/images/author2.jpg",
-  "tw": "https://twitter.com/jquemada",
-  "fb": "https://www.facebook.com/jquemada1",
-  "in": "https://www.linkedin.com/pub/juan-quemada/0/523/34a",
-  "github": "https://github.com/jquemada" 
-}]
+  ]
   res.render('authors', { "authors": authors_list, errors: [] });
 };
