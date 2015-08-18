@@ -1,41 +1,58 @@
-<div id='quizes_actions'>
-  <form class="" action="/quizes" method="GET">
-    <input type="text" name="search" placeholder="Buscar Quiz"/>
-    <input type="submit" value="Filtrar">
-  </form>
-  <% if (session.user) { %>
-    &nbsp;|&nbsp;
-    <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
-  <% } %>
-</div>
-<div id="quiz_list">
-  <table>
-    <% if (quizes.length > 0) { %>
-      <% for (var i in quizes) { %>
-        <tr>
-          <td>
-            <a class="links" href="quizes/<%= quizes[i].id %>">
-              <%= quizes[i].pregunta %>
-            </a>
-          </td>
-          <% if (session.user) { %>
-            <td>
-              <a class="links" href="quizes/<%= quizes[i].id %>/edit">
-                <button type="button">editar</button>
-              </a>
-            </td>
-            <td>
-              <form action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
-                <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-                  borrar
-                </button>
-              </form>
-            </td>
-          <% } %>
-        </tr>
+<div class="row">
+  <aside class="col-xs-12 col-md-5 col-md-push-7" >
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Opciones
+      </div>
+      <div class="panel-body">
+
+        <form action="/quizes" method="GET">
+          <input class="form-control" type="text" name="search" placeholder="Buscar Quiz"/>
+          <button class="btn btn-default btn-block" type="submit">Filtrar</button>
+        </form>
+        <% if (session.user) { %>
+          <hr class="featurette-divider"/>
+          <a class="btn btn-default btn-block" href="/quizes/new">Crear nueva pregunta</a>
         <% } %>
-    <% } else { %>
-      <p>No se encontraron coincidencias</p>
-    <% } %>
-  </table>
+      </div>
+    </div>
+  </aside>
+  <article class="col-xs-12 col-md-7 col-md-pull-5">
+    <div class="panel panel-default">
+      <table class="table table-hover table-striped">
+          <tbody class="">
+            <% if (quizes.length > 0) { %>
+              <% for (var i in quizes) { %>
+                <tr>
+                  <td class="quiz-col">
+                    <a href="quizes/<%= quizes[i].id %>">
+                      <%= quizes[i].pregunta %>
+                    </a>
+                  </td>
+                  <% if (session.user) { %>
+                    <td class="actions">
+                      <form class="inline-form" action="quizes/<%= quizes[i].id %>?_method=delete" method="post">
+                        <div class="btn-group" >
+                          <a class="btn btn-default" aria-label="editar pregunta" data-toggle="tooltip" data-placement="bottom" title="Editar" href="quizes/<%= quizes[i].id %>/edit">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                          </a>
+                          <button class="btn btn-default " type="submit" data-toggle="tooltip" data-placement="bottom" title="Eliminar" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </button>
+                      </div>
+                      </form>
+                    </td>
+                  <% } %>
+                </tr>
+                <% } %>
+            <% } else { %>
+              <p>No se encontraron coincidencias</p>
+            <% } %>
+          </tbody>
+
+        </table>
+    </div>
+  </article>
+
+
 </div>

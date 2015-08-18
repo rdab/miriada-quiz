@@ -30,7 +30,7 @@ footer img:hover{
   margin-top: .8em;
 }
 
-/* Author */
+/*** Author ***/
 .authors{
   display: flex;
   flex-flow: row wrap;
@@ -50,4 +50,17 @@ img.author_pict{
 .contact img{
   width: 22px;
   margin: 2px;
+}
+
+/*** Tables ***/
+.table td, .table th {
+    border: none !important;
+    vertical-align: middle !important;
+}
+.table .actions{
+  text-align: right;
+}
+.table .quiz-col a{
+  display: block;
+  text-decoration: none;
 }
