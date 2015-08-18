@@ -1,27 +1,42 @@
-<p>Pregunta: <%= quiz.pregunta %></p>
-<form method="GET" action="/quizes/<%= quiz.id %>/answer">
-  <input type="text" name="respuesta" placeholder="Responda aqu&iacute;"/>
-  <input type="submit" value="Enviar" />
-</form>
-<p>Temática: <%= topic %></p>
-
-<div id="quiz_comments">
-  <p>
-    <a href="/quizes/<%= quiz.id %>/comments/new"><button type="button">Nuevo Comentario</button></a>
-  </p>
-  <h3>Comentarios</h3>
-  <ul>
-    <% for (index in quiz.Comments){ %>
-      <% if (quiz.Comments[index].publicado || session.user){ %>
-        <li>
-          <%= quiz.Comments[index].texto %>
-          <% if (session.user && !quiz.Comments[index].publicado){ %>
-            <form action="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish?_method=put" method="post">
-              <input type="submit" value="Publicar" />
-            </form>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <h3>Pregunta: <%= quiz.pregunta %>? <small><span class="label label-info"><%= topic %></span></small></h3>
+    <form class="form-inline" method="GET" action="/quizes/<%= quiz.id %>/answer">
+      <label for="respuesta" class="sr-only">Respuesta</label>
+      <input class="form-control input-lg" type="text" name="respuesta" placeholder="Responda aqu&iacute;"/>
+      <button class="btn btn-primary btn-lg" type="submit">Comprobar</button>
+    </form>
+  </div>
+</div>
+<hr class="featurette-divider"/>
+<div class="row quiz-comments">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Comentarios</h3>
+        <a class="btn btn-default" href="/quizes/<%= quiz.id %>/comments/new">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          Comentar
+        </a>
+      </div>
+      <!-- List group -->
+      <ul class="list-group">
+        <% for (index in quiz.Comments){ %>
+          <% if (quiz.Comments[index].publicado || session.user){ %>
+            <li class="list-group-item">
+              <%= quiz.Comments[index].texto %>
+              <% if (session.user && !quiz.Comments[index].publicado){ %>
+                <form action="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish?_method=put" method="post">
+                  <button type="submit" class="btn btn-default" aria-label="Publicar">
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                  </button>
+                </form>
+              <% } %>
+            </li>
           <% } %>
-        </li>
-      <% } %>
-    <% } %>
-  </ul>
+        <% } %>
+      </ul>
+    </div>
+
+  </div>
 </div>

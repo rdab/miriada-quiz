@@ -52,15 +52,24 @@ img.author_pict{
   margin: 2px;
 }
 
-/*** Tables ***/
+/*** Quizes Table ***/
 .table td, .table th {
     border: none !important;
     vertical-align: middle !important;
 }
 .table .actions{
   text-align: right;
+  width: 100px;
 }
 .table .quiz-col a{
   display: block;
   text-decoration: none;
+}
+
+/*** Quizes comments ***/
+.quiz-comments .panel-heading, .quiz-comments li{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
 }
