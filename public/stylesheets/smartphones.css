@@ -1,21 +1,8 @@
-body {
-  background: #333;
-}
 
-h2 span, section h3, .rem { display: none; }
+nav#n1 ul{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 
-body { font-size: xx-large; }
-footer, input {font-size: large; }
-
-.author_name{
-  font-size: .7em;
-}
-#authors_wrap article{
-  margin: .6em;
-}
-#authors_wrap article:last-child{
-  margin-bottom: 0;
-}
-#authors_wrap article:first-child{
-  margin-top: 0;
+  font-size: 1.4em;
 }

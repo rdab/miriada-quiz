@@ -1,152 +1,75 @@
-* { margin: 0; padding: 0;}
-body { font: 16px Georgia, serif; }
-li { list-style: none; }
-
-a, a:visited{
-  text-decoration: none;
-  color: black;
+.centered-columns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-a.links{
-  color: #186D80;
-}
-a.links:hover{
-  color: #3BD1F3;
-}
-
-section > div { padding: 20px; }
-header, nav, section, footer {
-  background: #eee;
+/*** Header ***/
+nav#n1 a{
   text-align: center;
 }
 
-#n1{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#n1 span{
-  margin: 3px;
-}
-
-#page-wrap { margin: 2% auto; color: white; }
-#page-wrap > .main {
-  border: 1px solid #999;
-  padding: 1%;
-  margin-bottom: 1px;
-  color: black;
-}
-
-.right { float: right; }
-
-nav span { margin: 0 10px 0 0; }
-
-#ErrorMsgs{
-  color: #f61;
-  font-size: smaller;
-  display: flex;
-  flex-direction: column;
-}
-
-footer{
-  min-height: 100px;
-  font-size: .8em;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
+/*** Footer ***/
+footer.main > div{
+  min-height: 10em;
+  font-size: .9em;
 }
 footer a{
-  margin: 5px;
+  margin: 4px 0;
 }
-
-#github_logo{
-  background: no-repeat url(/images/GitHub-Mark-32px.png);
-  background-size: cover;
-  opacity: .2;
+footer img{
+  opacity: .3;
   height: 24px;
   width: 24px;
 }
-#github_logo:hover{
-  opacity: .4;
+footer img:hover{
+  opacity: .5;
 }
 
-/*
-  Preguntas
-*/
-#quizes_actions{
-  margin-bottom: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.form-signin .btn-primary{
+  margin-top: .8em;
 }
 
-#quiz_list{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-table{
-  border-spacing: 10px 7px;
-}
-
-/*
-  Comentarios
-*/
-#quiz_comments{
-  margin-top: 1em;
-  border-top: 1px solid gray;
-  padding-top: .5em;
-}
-#quiz_comments li{
-  list-style: '- ';
-}
-#quiz_comments form{
-  display: inline-block;
-}
-
-/*
-  Autores
- */
-#authors_wrap{
+/*** Author ***/
+.authors{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
- }
-#authors_wrap article{
-  font: .9em Arial;
-  display: flex;
-  flex-flow: nowrap column;
-  margin: 1em;
 }
-.author_links{
-  margin-top: .3em;
+.authors .thumbnail{
+  width: 150px;
+  margin: 8px;
 }
-.author_pict img{
+img.author_pict{
   height: 100px;
   width: 100px;
 }
-.author_links span{
+.contact{
   display: inline-block;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 20px;
-  width: 20px;
 }
-#al_fb span{
-  background-image: url(/images/FB-f-Logo__blue_29.png);
-}
-#al_in span{
-  background-image: url(/images/In-2C-28px-R.png);
-}
-#al_github span{
-  background-image: url(/images/GitHub-Mark-32px.png);
-}
-#al_tw span{
-  background-image: url(/images/twitter.png);
+.contact img{
+  width: 22px;
+  margin: 2px;
 }
 
-.contact span:hover{
-  box-shadow: 0px 2px 0px 0px #3BD1F3;
+/*** Quizes Table ***/
+.table td, .table th {
+    border: none !important;
+    vertical-align: middle !important;
+}
+.table .actions{
+  text-align: right;
+  width: 100px;
+}
+.table .quiz-col a{
+  display: block;
+  text-decoration: none;
+}
+
+/*** Quizes comments ***/
+.quiz-comments .panel-heading, .quiz-comments li{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
 }
