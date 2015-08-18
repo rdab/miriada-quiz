@@ -1,33 +1,36 @@
-<h3>Autores</h3>
-<div id="authors_wrap">
+<h3 class="text-center">Autores</h3>
+<div class="authors">
   <% for (i in authors){ %>
-    <article>
-      <span class="author_pict">
-        <img src=<%= authors[i].picture %> alt="picture"> </img>
-      </span>
-      <span class="author_name"><%= authors[i].name %></span>
-      <span class="author_links">
-        <% if (authors[i].fb != "") { %>
-          <a id="al_fb" class="contact" href=<%= authors[i].fb %> >
-            <span > </span>
-          </a>
-        <% } %>
-        <% if (authors[i].in != "") { %>
-          <a id="al_in" class="contact" href=<%= authors[i].in %> >
-            <span > </span>
-          </a>
-        <% } %>
-        <% if (authors[i].github != "") { %>
-          <a id="al_github" class="contact" href=<%= authors[i].github %>>
-            <span  > </span>
-          </a>
-        <% } %>
-        <% if (authors[i].tw != "") { %>
-          <a id="al_tw" class="contact" href=<%= authors[i].tw %>>
-            <span  > </span>
-          </a>
-        <% } %>
-      </span>
-    </article>
+    <div >
+      <div class="thumbnail">
+        <img class="author_pict" src="<%= authors[i].picture %>" alt="<%= 'foto de ' + authors[i].name %>">
+        <div class="caption">
+          <h5 class="text-center"><%= authors[i].name %></h5>
+          <span class="center-block text-center">
+            <% if (authors[i].fb != "") { %>
+              <a class="contact" href=<%= authors[i].fb %> >
+                <img src="/images/FB-f-Logo__blue_29.png" alt="" />
+              </a>
+            <% } %>
+            <% if (authors[i].in != "") { %>
+              <a class="contact" href=<%= authors[i].in %> >
+                <img src="/images/In.png" alt="" />
+              </a>
+            <% } %>
+            <% if (authors[i].github != "") { %>
+              <a class="contact" href=<%= authors[i].github %>>
+                <img src="/images/GitHub-Mark-32px.png" alt="" />
+              </a>
+            <% } %>
+            <% if (authors[i].tw != "") { %>
+              <a class="contact" href=<%= authors[i].tw %>>
+                <img src="/images/twitter.png" alt="" />
+              </a>
+            <% } %>
+          </span>
+        </div>
+      </div>
+    </div>
   <% } %>
+
 </div>
