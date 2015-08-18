@@ -21,18 +21,24 @@
       </div>
       <!-- List group -->
       <ul class="list-group">
-        <% for (index in quiz.Comments){ %>
-          <% if (quiz.Comments[index].publicado || session.user){ %>
-            <li class="list-group-item">
-              <%= quiz.Comments[index].texto %>
-              <% if (session.user && !quiz.Comments[index].publicado){ %>
-                <form action="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish?_method=put" method="post">
-                  <button type="submit" class="btn btn-default" aria-label="Publicar">
-                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                  </button>
-                </form>
-              <% } %>
-            </li>
+        <% if (quiz.Comments.length === 0){ %>
+          <li class="list-group-item disabled">
+            No existen comentarios. Se el primero en comentar!!!
+          </li>
+        <% } else { %>
+          <% for (index in quiz.Comments){ %>
+            <% if (quiz.Comments[index].publicado || session.user){ %>
+              <li class="list-group-item">
+                <%= quiz.Comments[index].texto %>
+                <% if (session.user && !quiz.Comments[index].publicado){ %>
+                  <form action="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[index].id %>/publish?_method=put" method="post">
+                    <button type="submit" class="btn btn-default" aria-label="Publicar">
+                      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                    </button>
+                  </form>
+                <% } %>
+              </li>
+            <% } %>
           <% } %>
         <% } %>
       </ul>
